@@ -2,6 +2,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ProductCard from "../Components/ProductCard.jsx";
 import {useCartStore} from "../Stores/cartStore.js";
+import {useWishListStore} from "../Stores/wishListStore.js";
 
 export default function ProductDetails(){
     const { state } = useLocation();
@@ -10,6 +11,9 @@ export default function ProductDetails(){
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [products, setProducts] = useState([]);
+    const isInWishList = useWishListStore(state => state.isInWishList);
+    const toggleWishList = useWishListStore(state => state.toggleWishList);
+    const isLiked = useWishListStore(state => state.wishList.some(prod => prod.id === product.id));
 
     const navigate = useNavigate();
     const addToCart = useCartStore(state => state.addToCart);
@@ -68,14 +72,24 @@ export default function ProductDetails(){
                         <h3 className="font-semibold text-xl">Description</h3>
                         <p className="text-gray-800">{product.description}</p>
                     </div>
-                    <div>
-                        <button className="w-100 text-center bg-gray-950 text-white text-lg rounded-2xl shadow-md hover:text-black hover:bg-gray-300 transition-all duration-300 cursor-pointer p-4"
-                                onClick={()=>{
+                    <div className="flex flex-col justify-center items-center gap-4">
+                        <div>
+                            <button className="w-100 text-center bg-yellow-600 text-black text-lg rounded-2xl shadow-md  hover:bg-yellow-700 transition-all duration-400 cursor-pointer p-4"
+                                    onClick={()=>{
                                         addToCart(product);
                                         navigate('/cart');
-                                }
-                        }>Add to Cart</button>
+                                    }
+                                    }>Add to Cart</button>
+                        </div>
+                        <div>
+                            <button className={isLiked?"w-100 text-center bg-gray-500 text-white text-lg rounded-2xl shadow-md  hover:bg-gray-600 transition-all duration-400 cursor-pointer p-4" :"w-100 text-center bg-red-400 text-white text-lg rounded-2xl shadow-md  hover:bg-red-500 transition-all duration-400 cursor-pointer p-4"}
+                                    onClick={()=>{
+                                        toggleWishList(product);
+                                    }
+                                    }>{ isInWishList(product)? <p>Remove From Wish-List</p> : <p>Add To Wish-List</p>}</button>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div className="mt-10">

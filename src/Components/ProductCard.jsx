@@ -8,7 +8,7 @@ export default function ProductCard({ product }){
             <div className="image-container">
                 <img src={image? image : './no-image.jpg'} alt={title} />
             </div>
-            <div className="absolute">
+            <div className="absolute z-10 px-3 py-2.5 rounded-full cursor-pointer bg-gray-300 top-6 left-8 opacity-85 hover:opacity-100 transition-all duration-400">
                 <Heart product={product} />
             </div>
 

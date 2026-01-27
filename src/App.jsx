@@ -66,7 +66,7 @@ export default function App(){
                     </nav>
 
                 </div>
-                <div className="relative" onClick={()=> navigate('/cart')}>
+                <div className="relative hover:text-gray-700 transition-all duration-250" onClick={()=> navigate('/cart')}>
                     <i className="fa-solid fa-cart-shopping cart cursor-pointer"></i>
                     <div className="absolute z-10 bottom-full left-1/2">
                         <p className="px-1.5 py-0 rounded-full opacity-90 bg-yellow-500 cursor-pointer text-gray-800">{productsNumber()}</p>

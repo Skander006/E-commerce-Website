@@ -18,22 +18,8 @@ export const useWishListStore = create(
                 });
             }
         },
-        removeFromWishList : (id)=>{
-            get().wishList.filter(prod => prod.id !== id);
-        },
-
-        addToWishList : (product)=>{
-            const wishList = get().wishList;
-            const existing = wishList.find(prod => prod.id !== product.id);
-            if (!existing){
-                set({
-                    wishList : [...wishList, product]
-                });
-            }
-        },
-
         isInWishList : (product)=>{
-            get().wishList.some(prod => prod.id === product.id);
+            return get().wishList.some(prod => prod.id === product.id);
         },
 
         clearWishList : ()=>{
