@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+
+body{
+    font-family: "Inter", sans-serif;
+    background-image: url("./bg.jpg");
+    @apply bg-cover bg-center bg-no-repeat p-6 mx-auto mt-6 min-h-screen max-w-screen-xl text-center;
+}
+
+.cat-card{
+    @apply bg-white p-6 rounded-xl shadow-xl flex flex-col gap-5 justify-center cursor-pointer items-center hover:scale-105 transition-all duration-300;
+}
+.cat-card img{
+    @apply bg-cover rounded-2xl shadow-xl;
+}
+.cat-card p{
+    @apply text-lg font-medium;
+}
+.filter{
+    @apply p-5 rounded-2xl shadow-md bg-gray-200 border-gray-800 text-lg text-gray-950 outline-none focus:border-1 focus:border-blue-900;
+}
+.filter-search{
+    @apply w-200 rounded-2xl border-1 border-gray-500 text-lg shadow-md p-5 bg-blue-100 outline-none focus:border-blue-900;
+}
+.filters{
+    @apply flex justify-around items-center mb-14 mt-10;
+}
+.search{
+    @apply mt-10;
+}
+.product-card{
+    @apply flex flex-col gap-8 rounded-2xl shadow-lg py-8 px-12 bg-gray-200 cursor-pointer hover:scale-105 transition-all duration-300;
+}
+.content-product{
+    @apply flex justify-center items-center gap-6 text-gray-500;
+}
+
+.pagination{
+    @apply flex justify-center items-center mt-20 gap-6;
+}
+.prev{
+    @apply px-6 py-3 bg-white border-black cursor-pointer rounded-xl shadow-md hover:bg-black hover:border-white hover:text-white transition-all duration-400 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-black;
+}
+.next{
+    @apply px-6 py-3 bg-white border-black cursor-pointer rounded-xl shadow-md hover:bg-black hover:border-white hover:text-white transition-all duration-400 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:text-black;
+}
+
+.image-container img{
+    @apply w-60 h-70;
+}
+
+.product-details{
+    @apply flex justify-center items-start gap-40 border-b-1 border-b-gray-400 p-8 pb-16;
+}
+.product-details .right-side{
+    @apply max-w-120;
+}
+
+.product-details .image-container img{
+    @apply h-120 w-70;
+}
+.product-details .right-side{
+    @apply flex flex-col text-left justify-baseline items-baseline gap-8 text-lg;
+}
+.product-details .right-side h1{
+    @apply font-bold text-2xl;
+}
+.rating{
+    @apply flex justify-center items-center gap-2;
+}
+.info{
+    font-size: 24px;
+}
+.product-description{
+    @apply flex flex-col justify-baseline items-baseline gap-3 mt-4;
+}
+
+.cart{
+    font-size: 24px;
+}
