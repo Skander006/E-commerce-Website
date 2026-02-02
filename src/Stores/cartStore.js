@@ -1,6 +1,8 @@
 import {create} from "zustand/react";
+import {persist} from "zustand/middleware";
 
-export const useCartStore = create((set, get) =>({
+export const useCartStore = create(
+    persist((set, get) =>({
     cart : [],
 
     //add product to cart
@@ -56,4 +58,9 @@ export const useCartStore = create((set, get) =>({
     articleNumbers : ()=>{
         return get().cart.length;
     }
-}));
+    }),
+        {
+            name : "cartStore"
+        }
+
+));
